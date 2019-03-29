@@ -1,0 +1,7 @@
+functions vs classes
+functions
+	- can be hoisted
+	- can be overwritten
+classes
+	- can not be hoisted
+	- can't be overwritten

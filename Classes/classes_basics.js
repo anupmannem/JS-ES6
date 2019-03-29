@@ -44,3 +44,36 @@ class Cloak extends React.Component {
 function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
 }
+
+// hoisting with classes
+
+// const cx5 = new Car(4, "V6", "grey");
+// console.log(cx5);
+// console.log(cx5.carStats());
+// Car not defined
+class Car {
+    constructor(doors, engine, color) {
+        this.doors = doors;
+        this.engine = engine;
+        this.color = color;
+    }
+
+    carStats() {
+        return `this car has ${this.doors} doors, a ${
+            this.engine
+        } engine and a beautiful ${this.color} color!`;
+    }
+}
+
+const cx5 = new Car(4, "V6", "grey");
+
+console.log(cx5);
+console.log(cx5.carStats());
+// Car {doors: 4, engine: "V6", color: "grey"}
+// This car has 4 doors, a V6 engine and a beautiful grey color!
+
+// hoisting with functions
+sayHi();
+function sayHi() {
+    return console.log("Hello");
+}

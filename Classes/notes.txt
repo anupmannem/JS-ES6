@@ -5,3 +5,9 @@ functions
 classes
 	- can not be hoisted
 	- can't be overwritten
+
+constructors
+	- if not written, automatically created
+	- only one constructor per class	
+	- keyword super allows to call methods from parents class
+	

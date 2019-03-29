@@ -63,6 +63,12 @@ class Car {
             this.engine
         } engine and a beautiful ${this.color} color!`;
     }
+
+    static totalDoors(car1, car2) {
+        const doors1 = car1.doors;
+        const doors2 = car2.doors;
+        return doors1 + doors2;
+    }
 }
 
 const cx5 = new Car(4, "V6", "grey");
@@ -77,3 +83,35 @@ sayHi();
 function sayHi() {
     return console.log("Hello");
 }
+
+// static methods
+class Car {
+    constructor(doors, engine, color) {
+        this.doors = doors;
+        this.engine = engine;
+        this.color = color;
+    }
+
+    carStats() {
+        return `this car has ${this.doors} doors, a ${
+            this.engine
+        } engine and a beautiful ${this.color} color!`;
+    }
+
+    // utility methods that are not passable to the instance
+    // have to call the main class to use these static methods
+    static totalDoors(car1, car2) {
+        const doors1 = car1.doors;
+        const doors2 = car2.doors;
+        return doors1 + doors2;
+    }
+}
+
+const cx5 = new Car(4, "V6", "grey");
+const civic = new Car(4, "V4", "blue");
+
+console.log(cx5);
+console.log(cx5.carStats());
+console.log(civic);
+console.log(civic.carStats());
+console.log(Car.totalDoors(cx5, cx6));

@@ -24,3 +24,29 @@ function updateClicks() {
     }
     reportClicks();
 }
+
+// closure
+function updateClicks() {
+	const choices = [];
+	function addChoice(newChoice) {
+		choices.push(newChoice);
+	}
+	return addChoice;
+}
+let updateColors = updateClicks();
+
+function updateClicks2() {
+	const choices = [];
+	function addChoice(newChoice) {
+		choices.push(newChoice);
+	}
+	return addChoice;
+}
+let updateTextures = updateClicks2();
+
+// code becomes redundant
+// reusablitiy is the key with closures
+let updateColors = updateClicks();
+let updateTextures = updateClicks();
+
+

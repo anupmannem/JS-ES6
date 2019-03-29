@@ -10,4 +10,7 @@ constructors
 	- if not written, automatically created
 	- only one constructor per class	
 	- keyword super allows to call methods from parents class
-	
+
+Mixins
+	- when you want to extend more than one class into a single class
+	- this is a pattern favoring composition over inheritence

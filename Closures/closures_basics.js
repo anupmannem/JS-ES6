@@ -11,3 +11,16 @@ function advice(tempC) {
     console.log(tempF + " deg F and " + forecast);
 }
 console.log(tempF); // error
+
+// Nested functions
+function updateClicks() {
+    const button = this.id;
+    clicks[button] = clicks[button] + 1 || 1;
+
+    // inner function
+    function reportClicks() {
+        const report = [button, clicks];
+        console.log(...report);
+    }
+    reportClicks();
+}

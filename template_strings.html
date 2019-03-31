@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Template strings</title>
+</head>
+<body>
+	<script>
+		const name = 'snicker';
+		const age = 2;
+		let sentence = 'My dog ' + name + ' is ' + age * 7 + ' years old.';
+		// three ways to make a string, "", '', ``
+		// the above sentence can be simplified using template literals
+		let sentence = `My dog ${name} is ${age*7} years old.`;
+		console.log(sentence);
+
+		// *************************************** //
+		const person = {
+			name: 'anup',
+			job: 'web developer',
+			city: 'hyderabad',
+			bio: 'anup is really cool guy who enjoys programming and teaching web development',
+		};
+		// creating html fragment
+		const markup = `
+			<div class='person'>
+				<h2>
+					${person.name}
+					<span class='job'>${person.job}</span>
+				</h2>
+				<p class='location'>${person.city}</p>
+				<p class='bio'>${person.bio}</p>
+			</div>
+		`;
+		document.body.innerHTML = markup;
+		// nesting
+		const dogs = [
+			{name: 'snicker', age: 2},
+			{name: 'hugo', age: 8},
+			{name: 'sunny', age: 1}
+		];
+		const markup = `
+			<ul class='dogs'>
+				${dogs.map(dog => 
+					`<li>
+						${dog.name} is ${dog.age} years old
+					</li>`).join('')}
+			</ul>
+		`;
+		document.body.innerHTML = markup;
+		// snicker is 2 years old
+		// hugo is 8 years old ...
+
+		const song = {
+			name: 'Dying to live',
+			artist: 'Tupac',
+			featuring: 'Biggie Smalls'
+		};
+		// conditional logic inside template literals
+		// if there is featuring property then add Featuring else empty string
+		const markup = `
+			<div class='song'>
+				<p>
+					${song.name} - ${song.artist}
+					${song.featuring ? `(Featuring ${song.featuring})` : ''}					
+				</p>
+			</div>
+		`;
+		document.body.innerHTML = markup;		
+
+		// handling complicated data
+		const beer = {
+			name: 'belgian wit',
+			brewery: 'steam wistle brewery',
+			keywords: ['pale', 'cloudy', 'spiced', 'crisp'] 
+		};
+
+		function renderKeywords(keywords) {
+			return `
+				<ul>
+					${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+				</ul>
+			`;
+		}
+		// separating components for keywords to avoid multiple layers of nesting
+		const markup = `
+			<div class='beer'>
+				<h2>${beer.name}</h2>
+				<p class='brewery'>${beer.brewery}</p>
+				${renderKeywords(beer.keywords)}
+			</div>
+		`;
+
+		document.body.innerHTML = markup;		
+	</script>
+
+</body>
+</html>

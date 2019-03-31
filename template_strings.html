@@ -94,5 +94,30 @@
 		document.body.innerHTML = markup;		
 	</script>
 
+	<style>
+		.h1 {background: #ffc60;}
+	</style>	
+	<script>
+		// *************************************** //
+		// tagged template literals
+		function highlight(strings, ...values) {
+			// ... rest operator - any number of arguments passed in are put into array
+			// strings arguments - breaks up the template literal string
+			// values = '0: snickers', '1: 100'
+			// strings = '0:My dog', '1:is', '2: years old.'
+			let str = '';
+			strings.forEach((string, i) => {
+				// str += string + (values[i] || '');
+				// if value[i] is undefined then emtpy string
+				str += `${string} <span class='h1'>${values[i] || ''}</span>`;
+			});
+			return str;
+		}
+		const name = 'snickers';
+		const age = 100;
+		const sentence = highlight`My dog ${name} is ${age*7} years old.`;
+		document.body.innerHTML = sentence;	
+	</script>
+
 </body>
 </html>

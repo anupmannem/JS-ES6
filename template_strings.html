@@ -119,5 +119,38 @@
 		document.body.innerHTML = sentence;	
 	</script>
 
+	<div class='bio'>
+
+	</div>
+	<script>
+		// *************************************** //
+		// tagged template example 2
+		// create abbreviations tags
+		const dict = {
+			HTML: 'hypertext markup language',
+			CSS: 'cascading style sheets'
+			JS: 'javascript'
+		}
+		function abbreviations(strings, ...values) {
+			const abbreviated = values.map(value => {
+				if(dict[value]) {
+					return `<abbr title="${dict[value]}">${value}</abbr>`
+				}
+				return value;
+			});
+			return strings.reduce((sentence, string, i) => {
+				return `${sentence}${string}${abbreviated[i] || ''}`;
+			} , '')
+		}
+
+		const first = 'anup';
+		const last = 'm';
+		const sentence = abbreviations`hello my name is ${first} ${last} and I love to code ${HTML}, ${CSS}, and ${JS}`;
+		const bio = document.querySelector('.bio');
+		const p = document.createElement('p');
+		p.innerHTML = sentence;
+		bio.appendChild(p);
+	</script>
+
 </body>
 </html>

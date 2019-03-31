@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Destructuring</title>
+</head>
+<body>
+	<!-- destructuring allows us to extract data from arrays,
+	objects, and other deeply nested structures into their own variables -->
+	<script type="text/javascript">
+		const person = {
+			first: 'anup',
+			last: 'm',
+			country: 'india',
+			city: 'hyderabad',
+			twitter: '@anupmannem'
+		};
+		// const first = person.first;
+		// const last = person.last;
+		const { first, last, twitter } = person;
+
+		const anup = {
+			first: 'anup',
+			last: 'm',
+			links: {
+				social: {
+					twitter: 'https://twitter.com/anupmannem',
+					facebook: 'https://facebook.com/anupmannem'
+				},
+				web: {
+					blog: 'https:hackingthestack.wordpress.com'
+				}
+			}			
+		}
+		// const twitter = anup.links.social.twitter;
+		// const facebook = anup.links.social.facebook;
+		const { twitter, facebook } = anup.links.social;
+
+		// renaming at the time of destructuring
+		const { twitter:tweet, facebook:fb } = anup.links.social;
+		// get the twitter property and name it to tweet
+		console.log(tweet, fb);
+
+		// setting defaults
+		const settings = {width: 300, color: 'black'}
+		const { width, height, color, fontSize} = settings;
+		// height, fontSize will be set to undefined
+		const { width=100, height=100, color='blue', fontSize=25} = settings;
+		// width will be destructured and set to 300, 
+		// height is not destructured, so fallback to 100
+		// color will be destructured and set to black
+		// fontSize is not destructured, so fallback to 25
+
+		// object destructuring with variable renaming and default value
+		const { w:width=400, h:height=500 } = {w: 300};
+		// w will be destructured and renamed and set to 300
+		// h is not destructured, renamed to height and fallback to 500
+	</script>
+</body>
+</html>

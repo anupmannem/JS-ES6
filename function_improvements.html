@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Arrow Functions</title>
+</head>
+<body>
+	<script>
+		const name = ['ujj', 'nikkh', 'anup'];
+		const fullName = names.map(function(name) {
+			return `${name}`;
+		});		
+		console.log(fullName);
+		//1.
+		const fullName1 = names.map((name) => {
+			return `${name}`;
+		});		
+		console.log(fullName1);
+		//2.
+		const fullName2 = names.map(name => {
+			return `${name}`;
+		});
+		console.log(fullName2);		
+		//3. implicit return
+		const fullName3 = names.map(name => `${name}`);
+		console.log(fullName3);
+		//4. no arguments
+		const fullName4 = names.map(() => 'cool name');
+		console.log(fullName4);
+
+		// arrow functions are anonymous functions. they do 
+		// not have names. But they can assigned to a variable
+	</script>
+</body>
+</html>

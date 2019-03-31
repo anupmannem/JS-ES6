@@ -47,7 +47,48 @@
 		console.log(old);
 
 		// *************************************************** //
-		
+		const box = document.querySelector('.box');
+		box.addEventListener('click', function() {
+			console.log(this);
+		});	// consoles div element when clicks
+		box.addEventListener('click', () => {
+			console.log(this);
+		});	// consoles window object
+		// arrow function does not bind this to that function
+		// it inherits the value of this from its parent
+
+		box.addEventListener('click', function() {
+			console.log(this);	// consoles div element
+			this.classList.toggle('opening');
+			setTimeout(function() {
+				console.log(this);	// consoles window object
+				this.classList.toggle('open');
+			}, 500);
+		});
+		box.addEventListener('click', function() {
+			console.log(this);	// consoles div element
+			this.classList.toggle('opening');
+			setTimeout(() => {
+				console.log(this);	// now inherits from parent this
+				this.classList.toggle('open');
+			}, 500);
+		});		
+
+		// swapping variables
+		box.addEventListener('click', function() {
+			let first = 'opening';
+			let second = 'open';
+
+			if(this.classList.contains(first)) {
+				[first, second] = [second, first];
+			}
+			this.classList.toggle(first);
+			setTimeout(() => {
+				this.classList.toggle(second);
+			}, 500);
+		});				
+
+		// *************************************************** //
 		
 	</script>
 </body>

@@ -30,6 +30,25 @@
 
 		// arrow functions are anonymous functions. they do 
 		// not have names. But they can assigned to a variable
+
+		// *************************************************** //
+		const race = '100m Dash';
+		const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+		const win = winners.map((winner, i) => {name: winner, race: race, place: i});
+		// returns error - unexpected token :
+		// pass object into parenthesis, to return object literal
+		const win = winners.map((winner, i) => ({name: winner, race: race, place: i+1}));
+		console.table(win);
+		// we can short hand race: race for just race
+
+		const ages = [23, 62, 45, 234, 2, 62, 234, 62, 34];
+		const old = ages.filter(age => age>=60); //return true or false
+		console.log(old);
+
+		// *************************************************** //
+		
+		
 	</script>
 </body>
 </html>

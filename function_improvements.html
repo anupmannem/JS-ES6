@@ -89,7 +89,44 @@
 		});				
 
 		// *************************************************** //
-		
+		function calculateBill(total, tax, tip) {
+			return total + (total*tax) + (total*tip);
+		}
+		const totalBill = calculateBill(100, 0.18, 0.15);
+		console.log(totalBill);
+		const totalBill = calculateBill(100);
+		console.log(totalBill);	// NaN, not arguments passed for tax, tip
+		// to counter this problem, we use conditional logic
+		//1.
+		function calculateBill(total, tax, tip) {
+			if(tax === undefined) {
+				tax = 0.18;
+			}
+			if(tip == undefined) {
+				tip = 0.15;
+			}
+			return total + (total*tax) + (total*tip);
+		}
+		const totalBill = calculateBill(100);
+		console.log(totalBill);
+		//2.
+		function calculateBill(total, tax, tip) {
+			tax = tax || 0.18; // if value passed set to itself otherwise 0.18
+			tip = tip || 0.15; // if value passed set to itself otherwise 0.15
+			return total + (total*tax) + (total*tip);
+		}
+		const totalBill = calculateBill(100);
+		console.log(totalBill);
+		//3. 
+		function calculateBill(total, tax=0.18, tip=0.15) {
+			return total + (total*tax) + (total*tip);
+		}
+		const totalBill = calculateBill(100);
+		console.log(totalBill);	// consoles value
+		const totalBill = calculateBill(100, ,0.25);
+		console.log(totalBill);	// consoles error - unexpected token ,
+		const totalBill = calculateBill(100, undefined, 0.25);
+		console.log(totalBill);	// consoles value
 	</script>
 </body>
 </html>

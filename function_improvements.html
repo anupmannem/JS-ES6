@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Arrow Functions</title>
 </head>
-<body>
+<body>	
 	<script>
 		const name = ['ujj', 'nikkh', 'anup'];
 		const fullName = names.map(function(name) {
@@ -127,6 +127,63 @@
 		console.log(totalBill);	// consoles error - unexpected token ,
 		const totalBill = calculateBill(100, undefined, 0.25);
 		console.log(totalBill);	// consoles value
+	</script>
+
+	<!-- when not to use arrow functions -->
+	<style>
+		button {font: 100px;}
+		.on {background: #ffc600}
+	</style>
+	<button id='pushy'>Push Me</button>
+	<script>
+		// when you really need 'this'
+		const button = document.querySelector('#pushy');
+		button.addEventListener('click', () => {
+			this.classList.toggle('on');	
+			// when clicked
+			// cannot read property toggle of undefined
+			// this here with arrow function will be window object
+			// solution - change it to regular function
+		});
+
+		// when you need a method to bind to an object
+		const person = {
+			points: 23,
+			score: () => {
+				this.point++;
+			}
+			// person.score() - does not increment
+			// this here is not bound to this function, but to the window			
+			// solution change to regular function
+		}
+
+		// when you need to add a prototype method
+		class Car {
+			constructor(make, color) {
+				this.make = make;
+				this.color = color;
+			}
+		}
+
+		const beemer = new Car('bmw', 'blue');
+		const subie = new Car('subaru', 'white');
+
+		Car.prototype.summarize = () => {
+			return `this car is ${this.make} in the color ${this.color}`;
+		};
+		subie.summarize();	// this car is undefined in the color undefined
+
+		// when you need arguments object
+		// when using arrow function we dont have access to argument objects
+		const orderChildren = () => {
+			const children = Array.from(arguments);
+			return children.map((child,i) => {
+				return `${child} was child #${i+1}`;
+			})
+			console.log(arguments);
+		}
+		orderChildren('jill', 'jin', 'jukk');	// referenceError - arguments is not defined
+		
 	</script>
 </body>
 </html>

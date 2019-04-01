@@ -74,6 +74,38 @@
 		// ...players - rest operator get the rest of the elements in an array
 		console.log(captain, vice-captain)
 		console.log(players);
+
+		// *************************************************** //
+		// destructuring functions
+		function convertCurrency(amount) {
+			const converted = {
+				USD: amount * 0.76;
+				GBP: amount * 0.53;
+				AUD: amount * 1.01;
+				MEX: amount * 13.30;
+			};
+			return converted;
+		}
+
+		// const hundo = convertCurrency(100);
+		// console.log(hundo);
+		const { USD, GBP } = convertCurrency(100);
+		console.log(USD, GBP)
+
+		function tipCalc({total, tip=0.18, tax=0.13}) {
+			return total + (tip * total) + (tax * total);
+		}
+		const bill = tipCalc({ total: 200, tip: 0.15, tax: 0.13 });
+		console.log(bill);
+
+		const bill = tipCalc();
+		console.log(bill);	// cannot match against 'undefined' or null
+		function tipCalc({total, tip=0.18, tax=0.13} = {}) {	
+		//if no object is passed, then default to {}
+			return total + (tip * total) + (tax * total);
+		}
+		const bill = tipCalc();
+		console.log(bill);
 	</script>
 </body>
 </html>

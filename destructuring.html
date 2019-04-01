@@ -7,7 +7,8 @@
 </head>
 <body>
 	<!-- destructuring allows us to extract data from arrays,
-	objects, and other deeply nested structures into their own variables -->
+	objects, maps&sets and other deeply nested structures into 
+	their own variables -->
 	<script type="text/javascript">
 		const person = {
 			first: 'anup',
@@ -56,6 +57,23 @@
 		const { w:width=400, h:height=500 } = {w: 300};
 		// w will be destructured and renamed and set to 300
 		// h is not destructured, renamed to height and fallback to 500
+
+		// *************************************************** //
+		// destructuring with arrays
+		const details = ['anup m', 123, 'audiopoc.com'];
+		// const name = details[0];
+		const [name, id, website] = details;
+		console.log(name, id, website);
+
+		const data = 'basketball, sports, 90210, 23';
+		const [itemName, category, skew, inventory] = data.split(',');
+		console.log(itemName, category, skew, inventory);
+
+		const team = ['virat', 'rohit', 'dhoni', 'jasprit', 'kuldeep']
+		const [captain, vice-captain, ...players] = team;
+		// ...players - rest operator get the rest of the elements in an array
+		console.log(captain, vice-captain)
+		console.log(players);
 	</script>
 </body>
 </html>

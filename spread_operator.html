@@ -70,7 +70,24 @@
 		alert(`hey there ${first} ${last}`);
 	}
 	sayHi(...name);
-	</script>
 	
+	// the rest parameter
+	// grabs rest of the elements and puts them into an array
+	function convertCurrenty(rate, ...amounts) {
+		// first parameter is rate, following elements are put into amounts array
+		return amounts.map(amount => amount*rate);
+	}
+	const amounts = convertCurrenty(1.54, 10, 23, 59, 23);
+	console.log(amounts);
+
+	// destructurin gusing rest paramter
+	const runner = ['marathon', 123, 5.5, 5.3, 6, 35];
+	const [name, id, runs] = runner;
+	console.log(name, id, runs);	// marathon 123 5.5
+	// to grab rest of them as well
+	const [name, id, ...runs] = runner;
+	console.log(name, id, runs);	// marathon 123 [5.5, 5.3, 6. 35]
+	</script>
+
 </body>
 </html>

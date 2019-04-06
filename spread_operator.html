@@ -5,6 +5,12 @@
 	<title>Spread operator</title>
 </head>
 <body>
+	<div class='people'>
+		<p>anup</p>
+		<p>mannem</p>
+		<p>Randy</p>
+	</div>
+
 	<script type="text/javascript">
 	const featured = ['deep dish', 'peperoni', 'hawaiian'];
 	const speciality = ['meatzza', 'spicy mama', 'margherita'];
@@ -22,6 +28,31 @@
 	//[...'anup'] == ['a','n','u','p']	
 	const pizzas = [...featured, 'veg', ...speciality];
 	console.log(pizzas);
+
+	const people = [...document.querySelectorAll('.people p')];
+	// alternative to Array.from()
+	const names = people.map(name => return name.textContent);
+	console.log(names);
+
+	// create new Array off of a property
+	const deepdish = {
+		pizzaName = 'deep dish',
+		size = 'medium',
+		ingredients: ['marinara', 'italian sausage', 'dough', 'cheese']
+	};
+	const shoppingList = ['milk', 'flour', ...deepdish.ingredients];
+
+	const comments = [
+		{id:20823, text: 'i love your dog'},
+		{id:20824, text: 'cuute!'},
+		{id:20825, text: 'you are so dumb'},
+		{id:20826, text: 'nice work!'},
+	];
+	const commentIndex = comments.findIndex(comment => comment.id===20824);
+	const newComments = [comments.slice(0, commentIndex), comments.slice(commentIndex+1)];
+	console.log(newComments);	// returns Array of arrays
+	const newComments = [...comments.slice(0, commentIndex), ...comments.slice(commentIndex+1)];
+	console.log(newComments);	/// returns Array of comments
 
 	</script>
 	

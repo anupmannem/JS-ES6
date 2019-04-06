@@ -70,6 +70,25 @@
 				console.log(post);
 			})
 			.catch(err => console.error(err));
+
+		// working with multiple promises
+		const weather = new Promise((resolve) => {
+			setTimeout(() => {
+				resolve({temp: 29, conditions: 'Sunny with clouds'});
+			}, 2000);
+		});
+		const tweets = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(['i like cake', 'BBQ is good']);
+			}, 500);
+		});
+		Promise
+			.all([weather, tweets])	// waits for all promises to resolve
+			.then(response => {
+				const [weatherInfo, tweetsInfo] = responses;
+				console.log(weatherInfo, tweetsInfo);
+			});
+		
 	</script>
 </body>
 </html>

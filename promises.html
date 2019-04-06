@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promises</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//console.log('going to fetch info from github API');
+		const dataPromise = fetch('https://api.github.com/users/anupmannem');
+		dataPromise
+			.then(data => {return data.json()})
+			.then(data => console.log(data))
+			.catch(err => console.error(err));
+		//console.log('done');
+	</script>
+</body>
+</html>

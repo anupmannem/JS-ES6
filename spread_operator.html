@@ -54,6 +54,22 @@
 	const newComments = [...comments.slice(0, commentIndex), ...comments.slice(commentIndex+1)];
 	console.log(newComments);	/// returns Array of comments
 
+	// spreading into a function
+	const inventors = ['einstein', 'newtorn', 'galileo'];
+	const newInventors = ['musk', 'jobs'];
+	inventors.push(newInventors);	// returns ['einstein', 'newtorn', 'galileo', Array[2]];
+	inventors.push.apply(inventors, newInventors);
+	// apply push function on newInventors passing elements into inventors
+	console.log(inventors);
+	// shorthand using spread operator
+	inventors.push(...newInventors);
+	console.log(inventors);
+
+	const name = ['anup', 'mannem'];
+	function sayHi(first, last) {
+		alert(`hey there ${first} ${last}`);
+	}
+	sayHi(...name);
 	</script>
 	
 </body>

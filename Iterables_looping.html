@@ -103,6 +103,32 @@
 			console.log(cut);			
 		}
 
+		// iterating over an object with for of
+		const apple = {
+			color: 'Red',
+			size: 'Medium',
+			weight: 50,
+			sugar: 10
+		};
+
+		for(const prop of apple) {
+			console.log(prop);
+		}	// displays TypeError apple[Symbol.iterator]
+		//solution 1
+		for(const prop of apple.entries()) {
+			console.log(prop);
+		}
+		//solution 2
+		for(const prop of Object.keys(apple)) {
+			console.log(prop);
+			const value = apple[prop];
+			console.log(value, prop;)
+		}	// returns array of values
+		//solution 3
+		for(const prop in apple) {
+			const value = apple[prop];
+			console.log(value, prop);
+		}
 	</script>
 </body>
 </html>

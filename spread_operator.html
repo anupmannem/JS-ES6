@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spread operator</title>
+</head>
+<body>
+	<script type="text/javascript">
+	const featured = ['deep dish', 'peperoni', 'hawaiian'];
+	const speciality = ['meatzza', 'spicy mama', 'margherita'];
+	// concatinating arrays
+	const pizzas = featured.concat(speciality);
+	console.log(pizzas);
+	// manipulate and concat
+	let pizzas = [];
+	pizzas.push('veg');
+	pizzas = pizzas.concat(speciality);
+	console.log(pizzas);
+
+	// spread operator
+	// spreads each item/characterinto its own in an array
+	//[...'anup'] == ['a','n','u','p']	
+	const pizzas = [...featured, 'veg', ...speciality];
+	console.log(pizzas);
+
+	</script>
+	
+</body>
+</html>

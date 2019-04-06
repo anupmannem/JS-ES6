@@ -41,5 +41,29 @@
 		const ages = Array.of(5, 10, 34, 6, 23, 9);
 		console.log(ages);
 
+		const obj = [
+			{
+				id: 1,
+				name: 'a',				
+			},
+			{
+				id: 2,
+				name: 'b',				
+			},
+			{
+				id: 3,
+				name: 'c',				
+			},
+		];
+		const post = obj.find(post => post.id === 2);
+		consol.log(post);
+		const postIndex = obj.findIndex(post => {
+			if(post.id === 2) return true;
+			return false;
+		})
+		console.log(postIndex);
+		//shorthand
+		const postIndex = obj.findIndex(post => post.id === 2);
+		console.log(postIndex);
 	</script>
 </html>

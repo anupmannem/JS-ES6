@@ -1,0 +1,45 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Functions on Array</title>
+</head>
+<body>
+	<div class="people">
+		<p>anup</p>
+		<p>mannem</p>
+		<p>snickers</p>
+	</div>
+</body>
+	<script type="text/javascript">
+		const people = document.querySelectorAll('.people p');
+		const names = people.map(person => person.textContent);
+		// TypeError people.map is not a function
+		// console.log(names) - nodesList, not regular array
+		const peopleArray = Array.from(people);
+		const names = people.map(person => person.textContent);
+		console.log(names);
+
+		// alternative way of writing
+		const people = document.querySelectorAll('.people p');
+		const names = Array.from(people, person => console.log(person.textContent));
+		// Array.from(target, map)
+
+		// convert arguments objects into actual array		
+		function sumAll() {
+			return arguments.reduce((prev, next) => prev + next, 0);
+		}	// TypeError arguments.reduce is not a function
+		// solution
+		function sumAll() {
+			const nums = Array.from(arguments);
+			return nums.reduce((prev, next) => prev + next, 0);
+		}
+		sumAll(2,34,53,61,3,42,6,634,57,9);
+
+		// Array of
+		// creates an array
+		const ages = Array.of(5, 10, 34, 6, 23, 9);
+		console.log(ages);
+
+	</script>
+</html>

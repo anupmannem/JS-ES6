@@ -45,8 +45,8 @@ readFile("./files/demofile.txt", "utf-8").then();
 function readFile(filename, encoding) {
 	return new Promise((resolve, reject) => {
 		fs.readFile(filename, encoding, (err, data) => {
-			if(err) return reject(err);
-			resolve(data);			
+			if (err) return reject(err);
+			resolve(data);	
 		});	
 	})	
 }
@@ -58,3 +58,39 @@ readFile("./files/demofile.txt", "utf-8").then(
 // util.promisify() another option to convert into promise verision
 const util = require("util");
 const readFile = util.promisify(fs.readFile);
+
+/******************************************************************/
+
+const fs = require("fs");
+const zlib = require("zlib");
+
+function zlib(data) {
+	return new Promise((resolve, reject) => {
+		zlib.gzip(data, (err, result) => {
+			if (err) return reject(err);
+			resolve(result);
+		});	
+	})	
+}
+
+function readFile(filename, encoding) {
+	return new Promise((resolve, reject) => {
+		fs.readFile(filename, encoding, (err, data) => {
+			if (err) return reject(err);
+			resolve(data);
+		});
+	});
+}
+
+readFile("./files/demofile.txt", "utf-8")
+	.then(data => {
+		// zip the file
+		zlib(data)
+	    .then(res => console.log(res), 
+	          // zip error handling
+	          err => console.log("failed to zip", err)	          
+	    )}, err => {	// file error handling
+	   		console.error("failed to read", err)
+	   	}
+	)
+	
